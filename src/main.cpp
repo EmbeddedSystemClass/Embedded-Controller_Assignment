@@ -6,7 +6,7 @@ Thread LightThread;
 Thread TempThread;
 
 //External voids
-extern void LoadGUI();
+extern void LoadStartScreen();
 extern void Sound();
 extern void Light();
 extern void Temp();
@@ -18,7 +18,7 @@ int main()
     LightThread.start(Light);
     TempThread.start(Temp);
 
-    LoadGUI();// Continues thread
+    LoadStartScreen();// Continues thread
 }
 
 
