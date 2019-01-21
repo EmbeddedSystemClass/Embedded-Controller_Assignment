@@ -6,7 +6,6 @@ LCD_DISCO_F746NG lcd;
 Serial PC(USBTX, USBRX);
 DigitalOut led(D2);
 
-
 extern bool GetCelTemp;
 
 extern float tempResult;
@@ -26,12 +25,13 @@ uint8_t soundText[10];
 
 Thread LabelUpdateThread;
 
-
+//Toggles LED
 void LEDToggle()
 {
     led = !led;
 }
 
+//Convert Non-constant into constant
 const string ToString(char * text)
 {
     return (const string)text;
@@ -54,51 +54,63 @@ void LoadBorder()
 
 void LoadUpdateingLabels()
 {
+    //Label holding the Temperature input result
     Label TempLabel(lcd.GetXSize() / 2, 45, "", Label::CENTER, Font16, LCD_COLOR_WHITE, 0xFF003538);
 
+    //Label holding the Light input result
     Label LightLabel(lcd.GetXSize() / 2, 105, "", Label::CENTER, Font16, LCD_COLOR_WHITE, 0xFF003538);
+    //Label holding Good day / Goodnight text depending on light result
     Label LightLabelText(lcd.GetXSize() / 2, 80, "Good day", Label::CENTER, Font16, LCD_COLOR_WHITE, 0xFF003538);
 
+    //Label holding the Sound input result
     Label SoundLabel(lcd.GetXSize() / 2, 165, "", Label::CENTER, Font16, LCD_COLOR_WHITE, 0xFF003538);
+    //Label holding warning text depending on sound result
     Label SoundLabelText(lcd.GetXSize() / 2, 140, "Warning: Noice!", Label::CENTER, Font16, LCD_COLOR_WHITE, 0xFF003538);
 
     while(1)
     {
         if (!GetCelTemp)
         {
+            //Converts and outputs Temperature result to Label in 'F
             sprintf((char *)tempText, "%2.1f'F", tempResult);
-            TempLabel.Draw(ToString((char *)tempText), LCD_COLOR_RED);
+            TempLabel.Draw(ToString((char *)tempText), LCD_COLOR_RED); //Redraw Label
         }
         else
         {
+            //Converts and outputs Temperature result to Label in 'C
             sprintf((char *)tempText, "%2.1f'C", tempResult);
-            TempLabel.Draw(ToString((char *)tempText), LCD_COLOR_BLUE);
+            TempLabel.Draw(ToString((char *)tempText), LCD_COLOR_BLUE); //Redraw Label
         }
 
+        //Converts and outputs Light result to Label
         sprintf((char *)lightText, "%2.1f'L", lightResult);
-        LightLabel.Draw(ToString((char *)lightText), LCD_COLOR_WHITE);
+        LightLabel.Draw(ToString((char *)lightText), LCD_COLOR_WHITE); //Redraw Label
 
+        //Converts and outputs Sound result to Label
         sprintf((char *)soundText, "%2.0f'dB", soundResult);
-        SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_WHITE);
+        SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_WHITE); //Redraw Label
 
+        //Updates Light Label
         if (lightResult > 150)
         {
-            LightLabelText.Draw("Good day", LCD_COLOR_WHITE);
+            LightLabelText.Draw("Good day", LCD_COLOR_WHITE); //Redraw Label
         }
         else
         {
-            LightLabelText.Draw("Goodnight", LCD_COLOR_WHITE);
+            LightLabelText.Draw("Goodnight", LCD_COLOR_WHITE); //Redraw Label
         }
 
+        //Updates Sound Label
         if (soundResult > 80)
         {
+            //Toggles LED
             LEDToggle();
-            SoundLabelText.Draw("Warning: Noice!", LCD_COLOR_WHITE);
+            SoundLabelText.Draw("Warning: Noice!", LCD_COLOR_WHITE); //Redraw Label
         }
         else
         {
             led = 0;
-            SoundLabelText.Draw("", LCD_COLOR_WHITE);
+            SoundLabelText.Draw("", LCD_COLOR_WHITE); //Redraw Label
         }
 
         wait(0.2);
@@ -116,6 +128,7 @@ void LoadMainScreen()
     //Posts the Room number input to serial
     PC.printf("\rRoom: %d\r\n", roomNumber);
 
+    //Draw the main border
     LoadBorder();
 
     //Start thread for updating labels
