@@ -1,3 +1,12 @@
+/**
+* @file main.cpp
+* @brief This initializes the main essential threads that run in this program
+*
+* @author Kristian Kraken Sarka Nielsen
+*
+* @date 14/01/2019
+*/
+
 #include "mbed.h"
 
 //Seperate Threads

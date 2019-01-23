@@ -12,9 +12,9 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-            "executable": "c:/Users/HFGF/Desktop/NewTest/KKSN_Opgave/.pioenvs/disco_f746ng/firmware.elf",
-            "toolchainBinDir": "C:/Users/HFGF/.platformio/packages/toolchain-gccarmnoneeabi/bin",
-            "svdPath": "C:/Users/HFGF/.platformio/platforms/ststm32/misc/svd/STM32F7x6.svd",
+            "executable": "c:/Users/krake/source/repos/KKSN_Opgave/.pioenvs/disco_f746ng/firmware.elf",
+            "toolchainBinDir": "C:/Users/krake/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "svdPath": "C:/Users/krake/.platformio/platforms/ststm32/misc/svd/STM32F7x6.svd",
             "preLaunchTask": {
                 "type": "PlatformIO",
                 "task": "Pre-Debug"
@@ -25,9 +25,9 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "c:/Users/HFGF/Desktop/NewTest/KKSN_Opgave/.pioenvs/disco_f746ng/firmware.elf",
-            "toolchainBinDir": "C:/Users/HFGF/.platformio/packages/toolchain-gccarmnoneeabi/bin",
-            "svdPath": "C:/Users/HFGF/.platformio/platforms/ststm32/misc/svd/STM32F7x6.svd",
+            "executable": "c:/Users/krake/source/repos/KKSN_Opgave/.pioenvs/disco_f746ng/firmware.elf",
+            "toolchainBinDir": "C:/Users/krake/.platformio/packages/toolchain-gccarmnoneeabi/bin",
+            "svdPath": "C:/Users/krake/.platformio/platforms/ststm32/misc/svd/STM32F7x6.svd",
             "internalConsoleOptions": "openOnSessionStart"
         }
     ]
