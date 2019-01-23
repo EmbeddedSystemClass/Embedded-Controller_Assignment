@@ -80,7 +80,8 @@ Project: Embedded Controller II
 
 
 --Thu: 24/01/2019--
-    -
+    - Documentation
+        - Finishing touches
 
 
 --Fri: 25/01/2019--
