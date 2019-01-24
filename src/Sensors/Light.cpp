@@ -4,7 +4,7 @@
 *
 * @author Kristian Kraken Sarka Nielsen
 *
-* @date 14/01/2019
+* @date 17/01/2019
 */
 
 #include "mbed.h"
@@ -18,7 +18,7 @@ float lightResult = 0; //Holds the result of Sensor convertion
 * This method is used to get and convert the input of a light sensor
 * @author Kristian Kraken Sarka Nielsen
 * @param lightResult (The result of the convertion)
-* @date 14/01/2019
+* @date 17/01/2019
 */
 void Light()
 {

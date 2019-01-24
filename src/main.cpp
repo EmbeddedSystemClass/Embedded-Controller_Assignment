@@ -13,12 +13,14 @@
 Thread SoundThread;
 Thread LightThread;
 Thread TempThread;
+Thread LabelUpdateThread;
 
 //External voids
 extern void LoadStartScreen();
 extern void Sound();
 extern void Light();
 extern void Temp();
+extern void LoadUpdatingLabels();
 
 /**
 * Main Method, starts seperate threads for sensors
@@ -30,6 +32,7 @@ int main()
     SoundThread.start(Sound);
     LightThread.start(Light);
     TempThread.start(Temp);
+    LabelUpdateThread.start(LoadUpdatingLabels);
 
     LoadStartScreen();// Continues thread
 }

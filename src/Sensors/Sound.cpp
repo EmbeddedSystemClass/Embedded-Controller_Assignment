@@ -1,9 +1,24 @@
+/**
+* @file Sound.cpp
+* @brief This script recives and converts the input from a sound sensor into decibel.
+*
+* @author Kristian Kraken Sarka Nielsen
+*
+* @date 17/01/2019
+*/
+
 #include "mbed.h"
 
 AnalogIn SoundSensor(A2); //Sensor connected to A2
 
 float soundResult = 0;
 
+/**
+* This method is used to get and convert the input of a sound sensor
+* @author Kristian Kraken Sarka Nielsen
+* @param soundResult (The result of the convertion)
+* @date 17/01/2019
+*/
 void Sound()
 {
     

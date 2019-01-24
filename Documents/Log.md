@@ -67,6 +67,8 @@ Start: 14/01/2019
         - Button function for output of converted sensor input to serial (Light)
         - Button function for output of converted sensor input to serial (Sound)
         - Button function for output of converted sensor input to serial (Temperature)
+        - Screen for selecting a building
+        - Screen for selecting a room
 
     - Documentation
         - Log progress

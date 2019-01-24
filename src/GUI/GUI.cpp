@@ -1,49 +1,77 @@
+/**
+* @file GUI.cpp
+* @brief This scrip controlls the different screens that are used in this project
+*
+* @author Kristian Kraken Sarka Nielsen
+*
+* @date 15/01/2019
+*/
+
 #include "mbed.h"
 #include "F746_GUI.hpp"
 
+//LCD screen
 LCD_DISCO_F746NG lcd;
 
+//Serial Connection
 Serial PC(USBTX, USBRX);
+//External LED
 DigitalOut led(D2);
 
+//Toggles Temperature units
 extern bool GetCelTemp;
 
+//Holds sensor input convertion results
 extern float tempResult;
 extern float soundResult;
 extern float lightResult;
 
-
+//Holds number on selected building
 int buildingNumber = 0;
+//Holds number on selected room
 int roomNumber = 0;
 
-bool doWhile = false;
-
+//Used to convert sensor input results to strings
 uint8_t tempText[10];
 uint8_t lightText[10];
 uint8_t soundText[10];
 
 
-Thread LabelUpdateThread;
-
-//Toggles LED
+/**
+* Toggles a LED
+* @author Kristian Kraken Sarka Nielsen
+* @param led (The led's state)
+* @date 17/01/2019
+*/
 void LEDToggle()
 {
     led = !led;
 }
 
-//Convert Non-constant into constant
+/**
+* Convert Non-constant into constant
+* @author Kristian Kraken Sarka Nielsen
+* @param led (The led's state)
+* @date 21/01/2019
+*/
 const string ToString(char * text)
 {
     return (const string)text;
 }
 
-void LoadBorder()
+/**
+* Creates a botder with a title
+* @author Kristian Kraken Sarka Nielsen
+* @param str (text for title)
+* @date 15/01/2019
+*/
+void LoadBorder(const string str)
 {
     //Clear LCD Screen
     lcd.Clear(0xFF003538);
     
     //Top Title
-    Label mainTitle(240, 5, "Eternity Squid Studios Controller II", Label::CENTER, Font16, LCD_COLOR_GREEN);
+    Label mainTitle(240, 5, str, Label::CENTER, Font16, LCD_COLOR_GREEN);
 
     //Border Color
     lcd.SetTextColor(LCD_COLOR_WHITE);
@@ -52,6 +80,12 @@ void LoadBorder()
     lcd.DrawRect(0, 25, 479, 225);
 }
 
+/**
+* Creates and updates labels with sensor input(s)
+* Runs on own (continous) thread
+* @author Kristian Kraken Sarka Nielsen
+* @date 21/01/2019
+*/
 void LoadUpdateingLabels()
 {
     //Label holding the Temperature input result
@@ -89,6 +123,7 @@ void LoadUpdateingLabels()
         //Converts and outputs Sound result to Label
         sprintf((char *)soundText, "%2.0f'dB", soundResult);
 
+        // Changes color on text based on input result
         if (soundResult > 80)
         {
             SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_LIGHTRED); //Redraw Label
@@ -129,6 +164,12 @@ void LoadUpdateingLabels()
     }
 }
 
+/**
+* Main screen with values displayed
+* Runs on own (continous) thread
+* @author Kristian Kraken Sarka Nielsen
+* @date 21/01/2019
+*/
 void LoadMainScreen()
 {
     //Baud for PuTTy 9600 Standard
@@ -141,10 +182,7 @@ void LoadMainScreen()
     PC.printf("\rRoom: %d\r\n", roomNumber);
 
     //Draw the main border
-    LoadBorder();
-
-    //Start thread for updating labels
-    LabelUpdateThread.start(LoadUpdateingLabels);
+    LoadBorder("Eternity Squid Studios Controller II");
     
     //Changes the temperature unit displayed & posts the input to serial
     Button labelBtnTemp(1, 26, 478, 60, "___________", Font16, LCD_COLOR_WHITE, 0xFF003538, 0xFF003538, 0xFF003538);
@@ -210,11 +248,17 @@ void LoadMainScreen()
     }
 }
 
+/**
+* Screen for selecting a Room
+* Runs on own (continous) thread
+* @author Kristian Kraken Sarka Nielsen
+* @date 21/01/2019
+*/
 void LoadRoomScreen()
 {
     wait(0.2);
 
-    LoadBorder();
+    LoadBorder("Select Room");
 
     uint16_t Width = 75, Height = 50; // Default Width & Height Setd for every button they're applied to
     uint16_t X = 125, Y = 50; // Default X & Y Axis Setd for every button they're applied to
@@ -274,11 +318,17 @@ void LoadRoomScreen()
     }
 }
 
+/**
+* Screen for selecting a building
+* Runs on own (continous) thread
+* @author Kristian Kraken Sarka Nielsen
+* @date 21/01/2019
+*/
 void LoadStartScreen()
 {
     wait(0.2);
 
-    LoadBorder();
+    LoadBorder("Select Building");
 
     uint16_t Width = 75, Height = 50; // Default Width & Height Setd for every button they're applied to
     uint16_t X = 125, Y = 50; // Default X & Y Axis Setd for every button they're applied to

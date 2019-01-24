@@ -1,3 +1,12 @@
+/**
+* @file Temp.cpp
+* @brief This script recives and converts the input from a temperature sensor into Lumen.
+*
+* @author Kristian Kraken Sarka Nielsen
+*
+* @date 17/01/2019
+*/
+
 #include "mbed.h"
 #include "Grove_temperature.h"
 
@@ -7,6 +16,13 @@ float tempResult = 0;
 
 bool GetCelTemp = false; //If false then you'll get 'Fahrenheit
 
+
+/**
+* This method is used to get and convert the input of a temperature sensor
+* @author Kristian Kraken Sarka Nielsen
+* @param tempResult (The result of the convertion)
+* @date 17/01/2019
+*/
 void Temp()
 {
     while(1)
