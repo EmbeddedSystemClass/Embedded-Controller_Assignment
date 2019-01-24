@@ -36,6 +36,9 @@ uint8_t tempText[10];
 uint8_t lightText[10];
 uint8_t soundText[10];
 
+//Holds the label updating thread
+Thread LabelUpdateThread;
+
 
 /**
 * Toggles a LED
@@ -180,6 +183,9 @@ void LoadMainScreen()
 
     //Posts the Room number input to serial
     PC.printf("\rRoom: %d\r\n", roomNumber);
+
+    //Starts the label updating thread
+    LabelUpdateThread.start(LoadUpdateingLabels);
 
     //Draw the main border
     LoadBorder("Eternity Squid Studios Controller II");
