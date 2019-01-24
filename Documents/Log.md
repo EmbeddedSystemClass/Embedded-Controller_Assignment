@@ -1,6 +1,7 @@
 # Project: Embedded Controller II
+## Auther: Kristian Kraken Sarka Nielsen
 Start: 14/01/2019
-Auther: Kristian Kraken Sarka Nielsen
+
 
 --Mon: 14/01/2019--
 
