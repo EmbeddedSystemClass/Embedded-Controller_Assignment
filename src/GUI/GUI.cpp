@@ -79,7 +79,7 @@ void LoadUpdateingLabels()
         {
             //Converts and outputs Temperature result to Label in 'C
             sprintf((char *)tempText, "%2.1f'C", tempResult);
-            TempLabel.Draw(ToString((char *)tempText), LCD_COLOR_BLUE); //Redraw Label
+            TempLabel.Draw(ToString((char *)tempText), LCD_COLOR_LIGHTBLUE); //Redraw Label
         }
 
         //Converts and outputs Light result to Label
@@ -88,16 +88,28 @@ void LoadUpdateingLabels()
 
         //Converts and outputs Sound result to Label
         sprintf((char *)soundText, "%2.0f'dB", soundResult);
-        SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_WHITE); //Redraw Label
+
+        if (soundResult > 80)
+        {
+            SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_LIGHTRED); //Redraw Label
+        }
+        else if (soundResult > 60 && soundResult < 80)
+        {
+            SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_YELLOW); //Redraw Label
+        }
+        else
+        {
+            SoundLabel.Draw(ToString((char *)soundText), LCD_COLOR_DARKGREEN); //Redraw Label
+        }
 
         //Updates Light Label
         if (lightResult > 150)
         {
-            LightLabelText.Draw("Good day", LCD_COLOR_WHITE); //Redraw Label
+            LightLabelText.Draw("Good day", LCD_COLOR_YELLOW); //Redraw Label
         }
         else
         {
-            LightLabelText.Draw("Goodnight", LCD_COLOR_WHITE); //Redraw Label
+            LightLabelText.Draw("Goodnight", LCD_COLOR_GRAY); //Redraw Label
         }
 
         //Updates Sound Label
@@ -105,7 +117,7 @@ void LoadUpdateingLabels()
         {
             //Toggles LED
             LEDToggle();
-            SoundLabelText.Draw("Warning: Noice!", LCD_COLOR_WHITE); //Redraw Label
+            SoundLabelText.Draw("Warning: Noise!", LCD_COLOR_LIGHTRED); //Redraw Label
         }
         else
         {
@@ -148,13 +160,8 @@ void LoadMainScreen()
 
     //Building number display
     uint8_t buildingText[20];
-    sprintf((char *)buildingText, "Building: %d", buildingNumber);
+    sprintf((char *)buildingText, "Building: %d    Room: %d", buildingNumber, roomNumber);
     Label BuildingLabel(20, lcd.GetYSize() - 15, (char *)buildingText, Label::CENTER, Font12, LCD_COLOR_BLUE, 0xFF003538);
-
-    //Room number display
-    uint8_t RoomText[20];
-    sprintf((char *)RoomText, "Room: %d", roomNumber);
-    Label RoomLabel(120, lcd.GetYSize() - 15, (char *)RoomText, Label::CENTER, Font12, LCD_COLOR_BLUE, 0xFF003538);
 
     wait(2.0);
 

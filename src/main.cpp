@@ -20,7 +20,11 @@ extern void Sound();
 extern void Light();
 extern void Temp();
 
-//Main Function
+/**
+* Main Method, starts seperate threads for sensors
+* @author Kristian Kraken Sarka Nielsen
+* @date 14/01/2019
+*/
 int main() 
 {
     SoundThread.start(Sound);
