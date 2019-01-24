@@ -3,6 +3,7 @@ Start: 14/01/2019
 Auther: Kristian Kraken Sarka Nielsen
 
 --Mon: 14/01/2019--
+
     - Download and installation of tools
         - VS Code
             -PlatformIO
@@ -17,6 +18,7 @@ Auther: Kristian Kraken Sarka Nielsen
 
 
 --Tue: 15/01/2019--
+
     - GUI Setup / creation
         - Border with title
         - Reset button
@@ -29,10 +31,12 @@ Auther: Kristian Kraken Sarka Nielsen
 
 
 --Wed: 16/01/2019--
+
     - Sick
 
 
 --Thu: 17/01/2019--
+
     - Sensor input & convertion
         - Sound Sensor to dB
         - Temperature Sensor To 'C and 'F
@@ -46,10 +50,12 @@ Auther: Kristian Kraken Sarka Nielsen
 
 
 --Fri: 18/01/2019--
+
     -Sick
 
 
 --Mon: 21/01/2019--
+
     - Research
         - Label interchangeable constant string (Success)
 
@@ -66,10 +72,12 @@ Auther: Kristian Kraken Sarka Nielsen
 
 
 --Tue: 22/01/2019--
+
     -Sick
 
 
 --Wed: 23/01/2019--
+
     - Research
         - LDR to Lux convertion (Failed)
 
@@ -79,9 +87,13 @@ Auther: Kristian Kraken Sarka Nielsen
 
 
 --Thu: 24/01/2019--
+
     - Documentation
         - Finishing touches
+        
+    - Evaluation
 
 
 --Fri: 25/01/2019--
-    - Evaluation
+
+    - Chill
