@@ -1,4 +1,4 @@
-# Eternity Squid Studios Embedded Controller II:
+# Embedded Controller II:
 
 (Created: 14-Jan-2019) by: Kristian Kraken Sarka Nielsen
 
